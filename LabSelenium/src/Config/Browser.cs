@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace LabSelenium.Config.Browser;
+namespace LabSelenium.src.Config;
 
 public class Browser : BrowserFactory
 {

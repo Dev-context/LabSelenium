@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace LabSelenium.Config;
+namespace LabSelenium.src.Config;
 
 public sealed class JsonFileConfig
 {

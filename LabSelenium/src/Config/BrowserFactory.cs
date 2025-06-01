@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 
-namespace LabSelenium.Config;
+namespace LabSelenium.src.Config;
 
 public class BrowserFactory
 {
@@ -17,9 +17,9 @@ public class BrowserFactory
 
         AppSettings.SettingsAtribute = HeadlessConfigKey;
         var headlessValue = AppSettings.DefineJsonPath();
-        Console.WriteLine($"Headless mode: {headlessValue} comp {String.Equals(headlessValue, "true", StringComparison.OrdinalIgnoreCase)}");
+        Console.WriteLine($"Headless mode: {headlessValue} comp {string.Equals(headlessValue, "true", StringComparison.OrdinalIgnoreCase)}");
 
-        if (String.Equals(headlessValue,"true",StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(headlessValue,"true",StringComparison.OrdinalIgnoreCase))
         {
             switch (options)
             {

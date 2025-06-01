@@ -1,21 +1,20 @@
-﻿using LabSelenium.Config;
-using LabSelenium.Config.Browser;
+﻿using LabSelenium.src.Config;
 using OpenQA.Selenium;
 
-namespace LabSelenium.TestBase;
+namespace LabSelenium.src.TestBase;
 
 public class TestBase
 {
-    public readonly Browser BrowserManager  = new Browser();
+    public static readonly Browser BrowserManager  = new Browser();
     private static string UrlConfigKey = "UrlBase";
     private static readonly SingletonAppSettings ConfigManager = SingletonAppSettings.GetInstance();
-    private IWebDriver _driver;
+    public  static IWebDriver _driver= BrowserManager.SetBrowser();
 
 
     [SetUp]
     public void Setup()
     {
-        _driver = BrowserManager.SetBrowser();
+
         ConfigManager.SettingsAtribute = UrlConfigKey;
         string url = ConfigManager.DefineJsonPath();
         _driver.Navigate().GoToUrl(url);
@@ -25,6 +24,7 @@ public class TestBase
     [TearDown]
     public void TearDown()
     {
-        _driver?.Quit();
+        //_driver?.Quit();
+        Console.Write("Close");
     }
 }

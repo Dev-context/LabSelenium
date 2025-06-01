@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace LabSelenium.Config;
+namespace LabSelenium.src.Config;
 
 public sealed class SingletonAppSettings
 {
@@ -21,7 +21,7 @@ public sealed class SingletonAppSettings
         }
     }
 
-    public String SettingsAtribute
+    public string SettingsAtribute
     {
         set => _settingsAttribute = value;
 
