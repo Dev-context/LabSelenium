@@ -4,7 +4,7 @@ namespace LabSelenium.src.Config;
 
 public sealed class SingletonAppSettings
 {
-    private static SingletonAppSettings _instance;
+    private static SingletonAppSettings? _instance;
     private string _settingsAttribute = "";
 
     public static SingletonAppSettings GetInstance()

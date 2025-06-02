@@ -1,14 +1,17 @@
+using Allure.NUnit;
 using LabSelenium.src.Pages;
-using LabSelenium.src.TestBase;
 using OpenQA.Selenium;
 
-namespace LabSelenium
+namespace LabSelenium.src.Tests
 {
-    public class Tests : TestBase
+    [AllureNUnit]
+    public class Tests : TestBase.TestBase
     {
-        private LoginPage _loginPage = new(_driver);
+        private readonly LoginPage _loginPage = new(_driver);
+
+        
         [Test]
-        public void sucessLogin()
+        public void SucessLogin()
         {      
             _loginPage.Login("standard_user", "secret_sauce");
             IWebElement productTitle = _driver.FindElement(By.CssSelector("span[data-test='title']"));
