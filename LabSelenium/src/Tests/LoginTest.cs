@@ -1,11 +1,10 @@
-using Allure.NUnit;
 using LabSelenium.src.Pages;
 using OpenQA.Selenium;
 
 namespace LabSelenium.src.Tests
 {
-    [AllureNUnit]
-    public class Tests : TestBase.TestBase
+
+    public class LoginTest : TestBase.TestBase
     {
         private readonly LoginPage _loginPage = new(_driver);
 
