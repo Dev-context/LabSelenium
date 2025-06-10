@@ -15,6 +15,7 @@ namespace LabSelenium.src.Tests
             _loginPage.Login("standard_user", "secret_sauce");
             IWebElement productTitle = _driver.FindElement(By.CssSelector("span[data-test='title']"));
             Assert.That(productTitle.Text == "Products");
+            
         }
     }
 }

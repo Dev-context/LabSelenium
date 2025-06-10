@@ -58,11 +58,8 @@ public class TestBase
 
     [OneTimeTearDown]
     public void OneTimeTearDown()
-    {
-    
+    {  
         _driver?.Dispose();
-   
-
-
+  
     }
 }

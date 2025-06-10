@@ -1,5 +1,6 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
+using OpenQA.Selenium;
 using Serilog;
 
 namespace LabSelenium.src.Hooks;
@@ -9,32 +10,23 @@ internal class ExtentReportManager
     private static ExtentReports _extent;
     private static ExtentSparkReporter _sparkReporter;
     private static ExtentTest ?_test;
-    private static string reportPath = "";
     private static bool _reportInitialized = false;
+    private static System.AppDomain  _rootDirectory= AppDomain.CurrentDomain;
+    private static string _reportPath ="";
 
 
     [OneTimeSetUp]
     public static void InitReport()
     {
+        var reportPath = Path.Combine(_rootDirectory.BaseDirectory, "ExtentReport.html");
+        var _extentReportPath = Path.Combine(_rootDirectory.BaseDirectory, "spark-config.json");
 
-        if (_reportInitialized) return;
-        _reportInitialized = true;
-
-        //reportPath = AppDomain.CurrentDomain.BaseDirectory+ "Reports/ExtentReport.html";
-        reportPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Reports/ExtentReport.html");
-        _sparkReporter = new ExtentSparkReporter(reportPath)
-        {
-
-            Config =
-            {
-                DocumentTitle="Sauce Labs Test Report",
-                ReportName="Test Execution"
-            }
-        };
+      
 
 
-        _sparkReporter.Config.DocumentTitle = "Automation Test Report";
-        _sparkReporter.Config.ReportName = "Test Execution Report";
+        _sparkReporter = new ExtentSparkReporter(reportPath);
+        _sparkReporter.LoadJSONConfig(_extentReportPath);
+
 
         _extent = new ExtentReports();
         _extent.AttachReporter(_sparkReporter);
@@ -79,8 +71,9 @@ internal class ExtentReportManager
     {
 
         _extent.Flush();
-        Log.Information("\n📄 Extent report saved to: {Path}", reportPath);
+        Log.Information("\n📄 Extent report saved to: {Path}", _reportPath);
         Log.Information("----------------🛑 End of test suite-------------------");
         Log.CloseAndFlush();
     }
+    
 }

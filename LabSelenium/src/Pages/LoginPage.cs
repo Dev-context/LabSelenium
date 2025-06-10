@@ -3,7 +3,7 @@
 namespace LabSelenium.src.Pages;
 public class LoginPage
 {
-    private  IWebDriver driver;
+    private readonly IWebDriver driver;
 
     public LoginPage(IWebDriver driver) 
     {  

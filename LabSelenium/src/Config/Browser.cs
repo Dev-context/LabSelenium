@@ -2,24 +2,20 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
-
 namespace LabSelenium.src.Config;
 
 public class Browser : BrowserFactory
 {
     private static readonly string BrowserName = "Agent:BrowserName";
 
-    private SingletonAppSettings JsonBrowserName = SingletonAppSettings.GetInstance();
+    private readonly SingletonAppSettings JsonBrowserName = SingletonAppSettings.GetInstance();
     public static IWebDriver? driver;
 
     public IWebDriver SetBrowser()
 
     {
-      
-
-        JsonBrowserName.SettingsAtribute = BrowserName;
-
      
+        JsonBrowserName.SettingsAtribute = BrowserName;
         switch (JsonBrowserName.DefineJsonPath().ToUpper())
         {
             case var browser when browser == BrowserTypes.CHROME.ToString():
